@@ -75,14 +75,20 @@ namespace TheLastPraktika
         {
             List<ThicknessAnimation> an = new List<ThicknessAnimation>()
             {
-                new ThicknessAnimation(new Thickness(90,30,10,30),new Duration(TimeSpan.FromSeconds(0.65))),
-                new ThicknessAnimation(new Thickness(20, 20, 1090, 20),new Duration(TimeSpan.FromSeconds(0.65))),
-                new ThicknessAnimation(new Thickness(9,-10,197,-10),new Duration(TimeSpan.FromSeconds(0.45))),
-                new ThicknessAnimation(new Thickness(90,30,788,30),new Duration(TimeSpan.FromSeconds(0.35))),
-                new ThicknessAnimation(new Thickness(10, 20, 1080, 20),new Duration(TimeSpan.FromSeconds(0.35))),
+                new ThicknessAnimation(new Thickness(90,30,10,30),
+                new Duration(TimeSpan.FromSeconds(0.65))),
+                new ThicknessAnimation(new Thickness(20, 20, 1090, 20),
+                new Duration(TimeSpan.FromSeconds(0.65))),
+                new ThicknessAnimation(new Thickness(9,-10,197,-10),
+                new Duration(TimeSpan.FromSeconds(0.45))),
+                new ThicknessAnimation(new Thickness(90,30,788,30),
+                new Duration(TimeSpan.FromSeconds(0.35))),
+                new ThicknessAnimation(new Thickness(10, 20, 1080, 20),
+                new Duration(TimeSpan.FromSeconds(0.35))),
 
             };
-            DoubleAnimation anD = new DoubleAnimation(1.0, new Duration(TimeSpan.FromSeconds(0.2)));
+            DoubleAnimation anD = new DoubleAnimation(1.0,
+                new Duration(TimeSpan.FromSeconds(0.2)));
             anD.BeginTime = TimeSpan.FromSeconds(j + 0.7);
 
             for (int i = 0; i < an.Count; i++)

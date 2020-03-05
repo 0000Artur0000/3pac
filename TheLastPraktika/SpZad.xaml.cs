@@ -92,16 +92,19 @@ namespace TheLastPraktika
                         {
                             if (C2.SelectedIndex < 1)
                             {
-                                object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2], ds.Tables[0].Rows[i][4], s[0], s[1] };
+                                object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
+                                    ds.Tables[0].Rows[i][4], s[0], s[1] };
                                 dt.Rows.Add(dr);
                             }
                             else
                             {
                                 for (int j = 0; j < ds.Tables[1].Rows.Count; j++)
-                                    if (C2.SelectedValue.ToString() == ds.Tables[1].Rows[j][4].ToString() && ds.Tables[1].Rows[j][1].ToString() == ds.Tables[0].Rows[i][1].ToString())
+                                    if (C2.SelectedValue.ToString() == ds.Tables[1].Rows[j][4].ToString() &&
+                                        ds.Tables[1].Rows[j][1].ToString() == ds.Tables[0].Rows[i][1].ToString())
                                     {
 
-                                        object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2], ds.Tables[0].Rows[i][4], s[0], s[1] };
+                                        object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
+                                            ds.Tables[0].Rows[i][4], s[0], s[1] };
                                         dt.Rows.Add(dr);
                                     }
                             }
@@ -112,16 +115,19 @@ namespace TheLastPraktika
                             {
                                 if (C2.SelectedIndex < 1)
                                 {
-                                    object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2], ds.Tables[0].Rows[i][4], s[0], s[1] };
+                                    object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
+                                        ds.Tables[0].Rows[i][4], s[0], s[1] };
                                     dt.Rows.Add(dr);
                                 }
                                 else
                                 {
                                     for (int j = 0; j < ds.Tables[1].Rows.Count; j++)
-                                        if (C2.SelectedValue.ToString() == ds.Tables[1].Rows[j][4].ToString() && ds.Tables[1].Rows[j][1].ToString() == ds.Tables[0].Rows[i][1].ToString())
+                                        if (C2.SelectedValue.ToString() == ds.Tables[1].Rows[j][4].ToString() &&
+                                            ds.Tables[1].Rows[j][1].ToString() == ds.Tables[0].Rows[i][1].ToString())
                                         {
 
-                                            object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2], ds.Tables[0].Rows[i][4], s[0], s[1] };
+                                            object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
+                                                ds.Tables[0].Rows[i][4], s[0], s[1] };
                                             dt.Rows.Add(dr);
                                         }
                                 }

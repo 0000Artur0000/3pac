@@ -13,8 +13,8 @@ namespace TheLastPraktika
     {
         private static SqlConnectionStringBuilder connS = new SqlConnectionStringBuilder()
         {
-            DataSource = "303-2\\SQLEXPRESS",
-            //DataSource = "DESKTOP-U5HC5KL",
+            //DataSource = "303-2\\SQLEXPRESS",
+            DataSource = "DESKTOP-U5HC5KL",
             InitialCatalog = "Ver4",
             IntegratedSecurity = true
         };
@@ -24,8 +24,10 @@ namespace TheLastPraktika
             {
                 string b = "";
                 conn.Open();
-                string d = $"SELECT * FROM dbo.IspolDB WHERE '{log}' = Логин_исполнителя AND '{pass}' = Пароль_исполнителя";
-                string d1 = $"SELECT * FROM dbo.MenejDB WHERE '{log}' = Логин_менеджера AND '{pass}' = Пароль_менеджера";
+                string d = $"SELECT * FROM dbo.IspolDB WHERE '{log}' = Логин_исполнителя AND" +
+                    $" '{pass}' = Пароль_исполнителя";
+                string d1 = $"SELECT * FROM dbo.MenejDB WHERE '{log}' = Логин_менеджера AND" +
+                    $" '{pass}' = Пароль_менеджера";
                 SqlCommand cmd = new SqlCommand(d, conn);
                 SqlDataReader sql = cmd.ExecuteReader();
                 if (sql.HasRows)

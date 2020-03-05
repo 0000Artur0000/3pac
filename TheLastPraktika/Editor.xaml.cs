@@ -52,8 +52,10 @@ namespace TheLastPraktika
                         T1.Text = dr[2].ToString();
                         T2.Text = dr[3].ToString();
                         C2.SelectedIndex = C1.SelectedIndex;
-                        C3.SelectedIndex = dr[4].ToString() == "plan" ? 1 : dr[4].ToString() == "use" ? 2 : dr[4].ToString() == "ready" ? 3 : 4;
-                        C4.SelectedIndex = dr[5].ToString() == "analysis" ? 1 : dr[5].ToString() == "deployment" ? 2 : 3;
+                        C3.SelectedIndex = dr[4].ToString() == "plan" ? 1 : 
+                            dr[4].ToString() == "use" ? 2 : dr[4].ToString() == "ready" ? 3 : 4;
+                        C4.SelectedIndex = dr[5].ToString() == "analysis" ? 1 : 
+                            dr[5].ToString() == "deployment" ? 2 : 3;
                     }
             }
         }
@@ -123,7 +125,8 @@ namespace TheLastPraktika
                                         s[1] = ds.Tables[2].Rows[h][3].ToString();
                             }
 
-                        object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2], ds.Tables[0].Rows[i][4], s[0], s[1] };
+                        object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
+                            ds.Tables[0].Rows[i][4], s[0], s[1] };
                         dt.Rows.Add(dr);
                         C1.Items.Add("Задача №" + ds.Tables[0].Rows[i][0]);
                         che.Add(int.Parse(ds.Tables[0].Rows[i][0].ToString()));
@@ -171,7 +174,8 @@ namespace TheLastPraktika
                 {
                     if (int.Parse(T2.Text) > 50 || int.Parse(T2.Text) < 1)
                     {
-                        MessageBox.Show("Сложность может быть только от 1 до 50", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Сложность может быть только от 1 до 50", 
+                            "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         g = false;
                     }
                     foreach (DataRow drr in ds.Tables[0].Rows)
@@ -184,12 +188,15 @@ namespace TheLastPraktika
                     }
                     dr[2] = T1.Text;
                     dr[3] = int.Parse(T2.Text);
-                    dr[4] = C3.SelectedIndex == 1 ? "plan" : C3.SelectedIndex == 2 ? "use" : C3.SelectedIndex == 3 ? "ready" : "cancel";
-                    dr[5] = C4.SelectedIndex == 1 ? "analysis" : C4.SelectedIndex == 2 ? "deployment" : "support";
+                    dr[4] = C3.SelectedIndex == 1 ? "plan" : C3.SelectedIndex == 2 ?
+                        "use" : C3.SelectedIndex == 3 ? "ready" : "cancel";
+                    dr[5] = C4.SelectedIndex == 1 ? "analysis" : C4.SelectedIndex == 2 ?
+                        "deployment" : "support";
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Проверьте правильность заполненных данных", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Проверьте правильность заполненных данных",
+                        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     g = false;
                 }
                 if (g)
@@ -207,7 +214,8 @@ namespace TheLastPraktika
                 {
                     if (int.Parse(T2.Text) > 50 || int.Parse(T2.Text) < 1)
                     {
-                        MessageBox.Show("Сложность может быть только от 1 до 50", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Сложность может быть только от 1 до 50",
+                            "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         g = false;
                     }
                     dr[0] = che[C1.SelectedIndex - 1];
@@ -216,12 +224,15 @@ namespace TheLastPraktika
                             dr[1] = drr[1].ToString();
                     dr[2] = T1.Text;
                     dr[3] = int.Parse(T2.Text);
-                    dr[4] = C3.SelectedIndex == 1 ? "plan" : C3.SelectedIndex == 2 ? "use" : C3.SelectedIndex == 3 ? "ready" : "cancel";
-                    dr[5] = C4.SelectedIndex == 1 ? "analysis" : C4.SelectedIndex == 2 ? "deployment" : "support";
+                    dr[4] = C3.SelectedIndex == 1 ? "plan" : C3.SelectedIndex == 2 ?
+                        "use" : C3.SelectedIndex == 3 ? "ready" : "cancel";
+                    dr[5] = C4.SelectedIndex == 1 ? "analysis" : C4.SelectedIndex == 2 ?
+                        "deployment" : "support";
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Проверьте правильность заполненных данных", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Проверьте правильность заполненных данных",
+                        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     g = false;
                 }
                 if (g)

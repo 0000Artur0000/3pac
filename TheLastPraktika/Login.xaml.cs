@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,19 +34,26 @@ namespace TheLastPraktika
                 MessageBox.Show("Введите данные!");
             else
             {
-                string jo = Connect.connect(T1.Text, T2.Password);
-                if (!String.IsNullOrEmpty(jo))
+                if (!(new Regex(@"[.?*+^$[\]\\(){}|\`\'\""\-]").IsMatch(T2.Password) || new Regex(@"[.?*+^$[\]\\(){}|\`\'\""\-]").IsMatch(T1.Text)))
                 {
-                    
-                    MainWindow mw = (MainWindow)Application.Current.MainWindow;
-                    MainWindow.name = jo;
-                    MainWindow.frmid = 1;
-                    MainWindow.hasLog = true;
-                    mw.DropClose(0.4);
-                   // mw.DropOpen(1.2);
+                    string jo = Connect.connect(T1.Text, T2.Password);
+                    if (!String.IsNullOrEmpty(jo))
+                    {
+
+                        MainWindow mw = (MainWindow)Application.Current.MainWindow;
+                        MainWindow.name = jo;
+                        MainWindow.frmid = 1;
+                        MainWindow.hasLog = true;
+                        mw.DropClose(0.4);
+                        // mw.DropOpen(1.2);
+                    }
+                    else
+                        MessageBox.Show("Неправильный логин или пароль!");
                 }
                 else
-                    MessageBox.Show("Неправильный логин или пароль!");
+                {
+                    MessageBox.Show("Недопустимые символы!");
+                }
             }
         }
     }
