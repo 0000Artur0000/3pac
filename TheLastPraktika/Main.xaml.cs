@@ -28,7 +28,8 @@ namespace TheLastPraktika
         
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            L1.Content = "Добро пожаловать,\n" + MainWindow.name.Replace("  "," ");
+            L1.Content = "Добро пожаловать,\n" +
+                MainWindow.name.Replace("  "," ");
             if(MainWindow.id == 0)
             {
                 Btn1.Visibility = Visibility.Hidden;

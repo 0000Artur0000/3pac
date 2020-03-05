@@ -44,17 +44,20 @@ namespace TheLastPraktika
             {
                 if (Double.Parse(T4.Text) < 0.0 || Double.Parse(T4.Text) > 1.0 )
                 {
-                    MessageBox.Show("'Анализ и проектирование' может быть только от 0 до 1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("'Анализ и проектирование' может быть только от 0 до 1",
+                        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     doDoHasDoHasMesh = false;
                 }
                 if (Double.Parse(T5.Text) < 0.0 || Double.Parse(T5.Text) > 1.0)
                 {
-                    MessageBox.Show("'Установка оборудования' может быть только от 0 до 1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("'Установка оборудования' может быть только от 0 до 1",
+                        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     doDoHasDoHasMesh = false;
                 }
                 if (Double.Parse(T6.Text) < 0.0 || Double.Parse(T6.Text) > 1.0)
                 {
-                    MessageBox.Show("'Техническое обслуживание и сопровождение' может быть только от 0 до 1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("'Техническое обслуживание и сопровождение' может быть" +
+                        " только от 0 до 1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     doDoHasDoHasMesh = false;
                 }
                 dr[0] = MainWindow.idd;
@@ -67,7 +70,8 @@ namespace TheLastPraktika
             catch (Exception)
             {
                 doDoHasDoHasMesh = false;
-                MessageBox.Show("Проверьте правильность данных", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Проверьте правильность данных", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
             //MessageBox.Show(dr[0] + ", " + dr[1] + ", " + dr[2] + ", " + dr[3] + ", " + dr[4] + ", " + dr[5] + ", " + dr[6] + ", " + dr[7] + ", " + dr[8] + ", " + dr[9]);
@@ -102,7 +106,8 @@ namespace TheLastPraktika
         private void TextUpdate()
         {
 
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            System.Threading.Thread.CurrentThread.CurrentCulture =
+                new System.Globalization.CultureInfo("en-US");
 
             for (int i = 0; i < tb.Count; i++)
             {

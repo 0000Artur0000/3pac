@@ -34,7 +34,8 @@ namespace TheLastPraktika
                 MessageBox.Show("Введите данные!");
             else
             {
-                if (!(new Regex(@"[.?*+^$[\]\\(){}|\`\'\""\-]").IsMatch(T2.Password) || new Regex(@"[.?*+^$[\]\\(){}|\`\'\""\-]").IsMatch(T1.Text)))
+                if (!(new Regex(@"[.?*+^$[\]\\(){}|\`\'\""\-]").IsMatch(T2.Password) ||
+                    new Regex(@"[.?*+^$[\]\\(){}|\`\'\""\-]").IsMatch(T1.Text)))
                 {
                     string jo = Connect.connect(T1.Text, T2.Password);
                     if (!String.IsNullOrEmpty(jo))
