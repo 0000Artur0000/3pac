@@ -103,13 +103,16 @@ namespace TheLastPraktika
         {
             using (SqlConnection conn = new SqlConnection(connS.ConnectionString))
             {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+                //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                 DataTable dt = new DataTable();
                 conn.Open();
                 string d = $"UPDATE tasks_for_executors Set [Логин_исполнителя] = '{name[1]}'," +
                     $" [Заголовок] = '{name[2]}', [Сложность] = '{name[3]}'," +
                     $" [Статус]= '{name[4]}'," +
-                    $" [Характер_работы] = '{name[5]}' WHERE id_rab = '{name[0]}'";
+                    $" [Характер_работы] = '{name[5]}', [Описание_задачи] = '{name[6]}'," +
+                    $"[Cрок_исполнения] = '{name[7]}',[Дата_выполнения] = '{name[8]}'," +
+                    $"[Время_задачи]= '{name[9]}' ,[Дата_Создания]= '{name[10]}'" +
+                    $" WHERE id_rab = '{name[0]}'";
                 new SqlCommand(d, conn).ExecuteNonQuery();
                 
                 conn.Close();
@@ -121,10 +124,14 @@ namespace TheLastPraktika
         {
             using (SqlConnection conn = new SqlConnection(connS.ConnectionString))
             {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+                //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                 DataTable dt = new DataTable();
                 conn.Open();
-                string d = $"Insert Into tasks_for_executors ([id_rab], [Логин_исполнителя], [Заголовок], [Сложность], [Статус], [Характер_работы]) VALUES ('{name[0]}', '{name[1]}', '{name[2]}', '{name[3]}', '{name[4]}', '{name[5]}')";
+                string d = $"Insert Into tasks_for_executors ([id_rab], [Логин_исполнителя]," +
+                    $" [Заголовок], [Сложность], [Статус], [Характер_работы], [Описание_задачи]," +
+                    $" [Cрок_исполнения] ,[Дата_выполнения] ,[Время_задачи] ,[Дата_Создания])" +
+                    $" VALUES ('{name[0]}', '{name[1]}', '{name[2]}', '{name[3]}', '{name[4]}'," +
+                    $" '{name[5]}', '{name[6]}', '{name[7]}', '{name[8]}', '{name[9]}', '{name[10]}')";
                 new SqlCommand(d, conn).ExecuteNonQuery();
 
                 conn.Close();

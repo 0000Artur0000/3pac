@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -31,8 +32,10 @@ namespace TheLastPraktika
             C1.Items.Clear();
             C2.Items.Clear();
             C1.Items.Add("Все");
-            C1.Items.Add("plan");
-            C1.Items.Add("ready");
+            C1.Items.Add("Запланирована");
+            C1.Items.Add("Исполняется");
+            C1.Items.Add("Выполнена");
+            C1.Items.Add("Отменена");
             C2.Items.Add("Все");
             C1.SelectedIndex = 0;
             C2.SelectedIndex = 0;
@@ -60,16 +63,19 @@ namespace TheLastPraktika
                         MainWindow.log.Add(ds.Tables[1].Rows[i][1].ToString());
             }
             for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
-                C2.Items.Add(ds.Tables[1].Rows[i][4].ToString());
+                if (MainWindow.log.Contains(ds.Tables[1].Rows[i][1].ToString()))
+                    C2.Items.Add(ds.Tables[1].Rows[i][4].ToString());
             postL();
             Gr.ItemsSource = ds.Tables[3].AsDataView();
+            Gr.Items.SortDescriptions.Clear();
+            Gr.Items.SortDescriptions.Add(new SortDescription(Gr.Columns[0].SortMemberPath, ListSortDirection.Ascending));
         }
         private void postL()
         {
             DataTable dt = ds.Tables[3];
             dt.Columns.Clear();
             dt.Rows.Clear();
-            dt.Columns.Add(new DataColumn("№ задачи"));
+            dt.Columns.Add(new DataColumn("№ задачи", System.Type.GetType("System.Int32")));
             dt.Columns.Add(new DataColumn("Заголовок задачи"));
             dt.Columns.Add(new DataColumn("Статус задачи"));
             dt.Columns.Add(new DataColumn("ФИО исполнителя"));
@@ -93,7 +99,10 @@ namespace TheLastPraktika
                             if (C2.SelectedIndex < 1)
                             {
                                 object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
-                                    ds.Tables[0].Rows[i][4], s[0], s[1] };
+                                    ds.Tables[0].Rows[i][4].ToString()=="plan"?"Запланирована":
+                                    ds.Tables[0].Rows[i][4].ToString()=="use"?"Исполняется":
+                                    ds.Tables[0].Rows[i][4].ToString()=="ready"?"Выполнена":
+                                    "Отменена", s[0], s[1] };
                                 dt.Rows.Add(dr);
                             }
                             else
@@ -104,19 +113,29 @@ namespace TheLastPraktika
                                     {
 
                                         object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
-                                            ds.Tables[0].Rows[i][4], s[0], s[1] };
+                                            ds.Tables[0].Rows[i][4].ToString()=="plan"?"Запланирована":
+                                            ds.Tables[0].Rows[i][4].ToString()=="use"?"Исполняется":
+                                            ds.Tables[0].Rows[i][4].ToString()=="ready"?"Выполнена":
+                                            "Отменена", s[0], s[1] };
                                         dt.Rows.Add(dr);
                                     }
                             }
                         }
                         else
                         {
-                            if (C1.SelectedValue.ToString() == ds.Tables[0].Rows[i][4].ToString())
+                            if (C1.SelectedValue.ToString() == (ds.Tables[0].Rows[i][4].ToString()
+                                == "plan" ? "Запланирована" :
+                                            ds.Tables[0].Rows[i][4].ToString() == "use" ? "Исполняется" :
+                                            ds.Tables[0].Rows[i][4].ToString() == "ready" ? "Выполнена" :
+                                            "Отменена"))
                             {
                                 if (C2.SelectedIndex < 1)
                                 {
                                     object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
-                                        ds.Tables[0].Rows[i][4], s[0], s[1] };
+                                        ds.Tables[0].Rows[i][4].ToString()=="plan"?"Запланирована":
+                                        ds.Tables[0].Rows[i][4].ToString()=="use"?"Исполняется":
+                                        ds.Tables[0].Rows[i][4].ToString()=="ready"?"Выполнена":
+                                        "Отменена", s[0], s[1] };
                                     dt.Rows.Add(dr);
                                 }
                                 else
@@ -127,7 +146,10 @@ namespace TheLastPraktika
                                         {
 
                                             object[] dr = { ds.Tables[0].Rows[i][0], ds.Tables[0].Rows[i][2],
-                                                ds.Tables[0].Rows[i][4], s[0], s[1] };
+                                                ds.Tables[0].Rows[i][4].ToString()=="plan"?"Запланирована":
+                                                ds.Tables[0].Rows[i][4].ToString()=="use"?"Исполняется":
+                                                ds.Tables[0].Rows[i][4].ToString()=="ready"?"Выполнена":
+                                                "Отменена", s[0], s[1] };
                                             dt.Rows.Add(dr);
                                         }
                                 }

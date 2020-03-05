@@ -60,6 +60,7 @@ namespace TheLastPraktika
                         " только от 0 до 1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     doDoHasDoHasMesh = false;
                 }
+
                 dr[0] = MainWindow.idd;
                 for (int i = 0; i < tb.Count; i++)
                 {

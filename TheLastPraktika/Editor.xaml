@@ -61,18 +61,35 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <GroupBox x:Name="Gb1" Header="" Margin="275,200,275,201">
+        <GroupBox x:Name="Gb1" Header="" Margin="116,200,116,175">
             <Grid >
                 <Label Content="Заголовок задачи:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="110" Foreground="#FF263238"/>
-                <Label Content="Сложность задачи:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="115" Foreground="#FF263238"/>
-                <Label Content="Исполнитель задачи:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="125" Foreground="#FF263238"/>
-                <Label Content="Статус задачи:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="88" Foreground="#FF263238"/>
-                <Label Content="Характер задачи:" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="104" Foreground="#FF263238"/>
-                <TextBox x:Name="T1" Height="23" Margin="135,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <TextBox x:Name="T2" Height="23" Margin="135,44,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <ComboBox x:Name="C3" Margin="135,107,10,0" VerticalAlignment="Top" SelectionChanged="C3_SelectionChanged"/>
-                <ComboBox x:Name="C2" Margin="135,76,10,0" VerticalAlignment="Top" SelectionChanged="C2_SelectionChanged"/>
-                <ComboBox x:Name="C4" Margin="135,138,10,0" VerticalAlignment="Top" SelectionChanged="C4_SelectionChanged"/>
+                <Label Content="Сложность задачи:" HorizontalAlignment="Left" Margin="290,144,0,0" VerticalAlignment="Top" Width="114" Foreground="#FF263238" Height="46" VerticalContentAlignment="Center"/>
+                <Label Content="Исполнитель задачи:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="125" Foreground="#FF263238"/>
+                <Label Content="Статус задачи:" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Width="88" Foreground="#FF263238"/>
+                <Label Content="Характер задачи:" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Width="104" Foreground="#FF263238"/>
+                <TextBox x:Name="T1" Height="23" Margin="135,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="381"/>
+                <TextBox x:Name="T2" Height="22" Margin="406,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="109" RenderTransformOrigin="0.5,0.493">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="0.126"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="0.164"/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+                <ComboBox x:Name="C3" Margin="135,137,0,0" VerticalAlignment="Top" SelectionChanged="C3_SelectionChanged" HorizontalAlignment="Left" Width="150"/>
+                <ComboBox x:Name="C2" Margin="135,41,0,0" VerticalAlignment="Top" SelectionChanged="C2_SelectionChanged" HorizontalAlignment="Left" Width="381"/>
+                <ComboBox x:Name="C4" Margin="135,168,0,0" VerticalAlignment="Top" SelectionChanged="C4_SelectionChanged" HorizontalAlignment="Left" Width="150"/>
+                <Label Content="Срок исполнения:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="108" Foreground="#FF263238" Height="27" Padding="5" VerticalContentAlignment="Center"/>
+                <DatePicker x:Name="D2" HorizontalAlignment="Left" Margin="134,105,0,0" VerticalAlignment="Top" Width="151"/>
+                <Label Content="Дата выполнения:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="110" Foreground="#FF263238" Height="26" Padding="5,0" VerticalContentAlignment="Center"/>
+                <DatePicker x:Name="D1" HorizontalAlignment="Left" Margin="134,73,0,0" VerticalAlignment="Top" Width="151"/>
+                <Label Content="Время на выполнение &#xD;&#xA;задачи (в Минутах):" HorizontalAlignment="Left" Margin="290,75,0,0" VerticalAlignment="Top" Width="226" Foreground="#FF263238" Height="36" Padding="0" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="T3" Height="23" Margin="290,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="226"/>
+                <Label Content="Описание задачи:" HorizontalAlignment="Left" Margin="528,10,0,0" VerticalAlignment="Top" Width="110" Foreground="#FF263238"/>
+                <TextBox x:Name="T4" Height="146" Margin="528,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250"/>
             </Grid>
         </GroupBox>
 

@@ -26,6 +26,7 @@ namespace TheLastPraktika
             InitializeComponent();
             T1.MaxLength = 25;
             T2.MaxLength = 20;
+            T1.MaxLines = 1;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
