@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="TheLastPraktika.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheLastPraktika"
+             mc:Ignorable="d" 
+             d:DesignHeight="580" d:DesignWidth="235">
+    <Grid>
+        <Label Content="Авторизация" Margin="10,100,10,430" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" Padding="0" FontWeight="Bold">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF00A7FC" Offset="0"/>
+                    <GradientStop Color="#FF0092EB" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <GroupBox Header="Логин" HorizontalAlignment="Left" Height="56" Margin="10,217,0,0" VerticalAlignment="Top" Width="215" Foreground="#FF0097EF">
+            <TextBox x:Name="T1" Margin="5" TextWrapping="Wrap"/>
+        </GroupBox>
+        <GroupBox Header="Пароль" HorizontalAlignment="Left" Height="56" Margin="10,294,0,0" VerticalAlignment="Top" Width="215" Foreground="#FF0097EF">
+            <PasswordBox x:Name="T2" Margin="5"/>
+        </GroupBox>
+        <Button Content="Вход" Margin="10,404,10,129" Style="{DynamicResource OvalBut}" FontSize="25" Padding="0" FontWeight="Bold" Click="Button_Click" Foreground="White">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF00AAFF" Offset="0"/>
+                    <GradientStop Color="#FF0091EA" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</UserControl>
