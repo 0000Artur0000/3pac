@@ -92,11 +92,12 @@ namespace TheLastPraktika
                         MainWindow.log.Add(ds.Tables[1].Rows[i][1].ToString());
             }
             postL();
-            foreach (DataRow dr in ds.Tables[3].Rows)
+            foreach (DataRow dr in ds.Tables[1].Rows)
+                if(MainWindow.log.Contains(dr[1].ToString()))
                 if (!(C2.Items.Contains(dr[3].ToString())))
                 {
 
-                    C2.Items.Add(dr[3].ToString());
+                    C2.Items.Add(dr[4].ToString());
                 }
         }
         private void postL()
@@ -172,7 +173,7 @@ namespace TheLastPraktika
                             "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         g = false;
                     }
-                    Regex rgx = new Regex(@"[?*+^$[\]\\(){}|\`\'\""\-]");
+                    Regex rgx = new Regex(@"[?*+^$[\]\\(){}|\`\'\-]");
                     if (rgx.IsMatch(T1.Text) || rgx.IsMatch(T2.Text) ||
                         rgx.IsMatch(T3.Text) || rgx.IsMatch(T4.Text))
                     {
@@ -283,6 +284,10 @@ namespace TheLastPraktika
         }
         private void Button_Click_del(object sender, RoutedEventArgs e)
         {
+            
+            if(MessageBox.Show("Вы точно хотите удалить задачу " +
+                "№" + che[C1.SelectedIndex - 1] + "?", "Проверка",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             if (C1.HasItems)
             {
                 Connect.del(che[C1.SelectedIndex - 1]);
