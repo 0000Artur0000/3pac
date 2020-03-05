@@ -44,15 +44,18 @@ namespace TheLastPraktika
         }
         private void check()
         {
-            foreach(DataRow dr in ds.Tables[0].Rows)
-                if(che[C1.SelectedIndex-1].ToString() == dr[0].ToString())
-                {
-                    T1.Text = dr[2].ToString();
-                    T2.Text = dr[3].ToString();
-                    C2.SelectedIndex = C1.SelectedIndex ;
-                    C3.SelectedIndex = dr[4].ToString() == "plan" ? 1 : dr[4].ToString() == "use" ? 2 : dr[4].ToString() == "ready" ? 3 : 4;
-                    C4.SelectedIndex = dr[5].ToString() == "analysis" ? 1 : dr[5].ToString() == "deployment" ? 2 : 3;
-                }
+            if (C1.HasItems)
+            {
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                    if (che[C1.SelectedIndex - 1].ToString() == dr[0].ToString())
+                    {
+                        T1.Text = dr[2].ToString();
+                        T2.Text = dr[3].ToString();
+                        C2.SelectedIndex = C1.SelectedIndex;
+                        C3.SelectedIndex = dr[4].ToString() == "plan" ? 1 : dr[4].ToString() == "use" ? 2 : dr[4].ToString() == "ready" ? 3 : 4;
+                        C4.SelectedIndex = dr[5].ToString() == "analysis" ? 1 : dr[5].ToString() == "deployment" ? 2 : 3;
+                    }
+            }
         }
         public void load()
         {
@@ -134,12 +137,17 @@ namespace TheLastPraktika
 
         private void C1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             if (C1.SelectedIndex == 0)
             {
                 Btn1_Copy1.Visibility = Visibility.Hidden;
                 Gb1.Header = "Добавление записи";
                 T1.Text = "";
                 T2.Text = "";
+                if (MainWindow.id==0)
+                {
+                    C2.Items.Remove(C2.Items[0]);  
+                }
                 C2.SelectedIndex = 0;
                 C3.SelectedIndex = 0;
                 C4.SelectedIndex = 0;
@@ -154,12 +162,87 @@ namespace TheLastPraktika
 
         private void Button_Click_save(object sender, RoutedEventArgs e)
         {
+            if (C1.SelectedIndex == 0)
+            {
+                bool g = true;
+                
+                DataRow dr = ds.Tables[0].NewRow();
+                try
+                {
+                    if (int.Parse(T2.Text) > 50 || int.Parse(T2.Text) < 1)
+                    {
+                        MessageBox.Show("Сложность может быть только от 1 до 50", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        g = false;
+                    }
+                    foreach (DataRow drr in ds.Tables[0].Rows)
+                        dr[0] = int.Parse(drr[0].ToString()) + 1;
+                    foreach (DataRow drr in ds.Tables[1].Rows)
+                    {
+                        if (drr[4].ToString() == C2.SelectedValue.ToString())
+                            dr[1] = drr[1].ToString();
 
+                    }
+                    dr[2] = T1.Text;
+                    dr[3] = int.Parse(T2.Text);
+                    dr[4] = C3.SelectedIndex == 1 ? "plan" : C3.SelectedIndex == 2 ? "use" : C3.SelectedIndex == 3 ? "ready" : "cancel";
+                    dr[5] = C4.SelectedIndex == 1 ? "analysis" : C4.SelectedIndex == 2 ? "deployment" : "support";
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Проверьте правильность заполненных данных", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    g = false;
+                }
+                if (g)
+                {
+                    Connect.add(dr);
+                    load();
+                }
+            }
+            else
+            {
+                bool g = true;
+                
+                DataRow dr = ds.Tables[0].NewRow();
+                try
+                {
+                    if (int.Parse(T2.Text) > 50 || int.Parse(T2.Text) < 1)
+                    {
+                        MessageBox.Show("Сложность может быть только от 1 до 50", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        g = false;
+                    }
+                    dr[0] = che[C1.SelectedIndex - 1];
+                    foreach (DataRow drr in ds.Tables[1].Rows)
+                        if (drr[4].ToString() == C2.SelectedValue.ToString())
+                            dr[1] = drr[1].ToString();
+                    dr[2] = T1.Text;
+                    dr[3] = int.Parse(T2.Text);
+                    dr[4] = C3.SelectedIndex == 1 ? "plan" : C3.SelectedIndex == 2 ? "use" : C3.SelectedIndex == 3 ? "ready" : "cancel";
+                    dr[5] = C4.SelectedIndex == 1 ? "analysis" : C4.SelectedIndex == 2 ? "deployment" : "support";
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Проверьте правильность заполненных данных", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    g = false;
+                }
+                if (g)
+                {
+                    Connect.edit(dr);
+                    load();
+                }
+
+            }
         }
-
         private void Button_Click_del(object sender, RoutedEventArgs e)
         {
-
+            if (C1.HasItems)
+            {
+                Connect.del(che[C1.SelectedIndex - 1]);
+                load();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void C2_SelectionChanged(object sender, SelectionChangedEventArgs e)

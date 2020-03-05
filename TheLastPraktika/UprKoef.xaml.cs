@@ -42,6 +42,21 @@ namespace TheLastPraktika
             bool doDoHasDoHasMesh = true;
             try
             {
+                if (Double.Parse(T4.Text) < 0.0 || Double.Parse(T4.Text) > 1.0 )
+                {
+                    MessageBox.Show("'Анализ и проектирование' может быть только от 0 до 1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    doDoHasDoHasMesh = false;
+                }
+                if (Double.Parse(T5.Text) < 0.0 || Double.Parse(T5.Text) > 1.0)
+                {
+                    MessageBox.Show("'Установка оборудования' может быть только от 0 до 1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    doDoHasDoHasMesh = false;
+                }
+                if (Double.Parse(T6.Text) < 0.0 || Double.Parse(T6.Text) > 1.0)
+                {
+                    MessageBox.Show("'Техническое обслуживание и сопровождение' может быть только от 0 до 1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    doDoHasDoHasMesh = false;
+                }
                 dr[0] = MainWindow.idd;
                 for (int i = 0; i < tb.Count; i++)
                 {
