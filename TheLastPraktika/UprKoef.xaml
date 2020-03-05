@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="TheLastPraktika.UprKoef"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheLastPraktika"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Width="1028" Height="598">
+    <UserControl.Resources>
+        <Style x:Key="Oval" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" CornerRadius="10">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Loaded="Grid_Loaded">
+        <Image Margin="0,10,10,0" Source="logo.png" Stretch="Fill" Height="97" VerticalAlignment="Top" HorizontalAlignment="Right" Width="267"/>
+        <Label x:Name="L1" Content="Управление коэффициентами" FontSize="35" FontFamily="Segoe UI Semibold" RenderTransformOrigin="0.5,0.5" Margin="0,10,283,0" VerticalContentAlignment="Center" Height="97" VerticalAlignment="Top" Padding="0" Foreground="#FF263238">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.238"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-1.496"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Border BorderBrush="Black" BorderThickness="0" Height="4" Margin="10,112,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" CornerRadius="1000">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#CC00AAFF" Offset="0"/>
+                    <GradientStop Color="#020091EA" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="0" Margin="10,0,10,40" RenderTransformOrigin="0.5,0.5" CornerRadius="1000" Height="4" VerticalAlignment="Bottom">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#CC00AAFF" Offset="0"/>
+                    <GradientStop Color="#020091EA" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Label Content="2020г. © ООО Е-софт" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="137" HorizontalContentAlignment="Right" Foreground="#FF263238"/>
+        <Button x:Name="Btn1" Content="Назад" Margin="10,0,0,49" Style="{DynamicResource OvalBut}" FontSize="25" Padding="0" FontWeight="Bold" Click="Button_Click" Foreground="White" Height="50" HorizontalAlignment="Left" Width="150" VerticalAlignment="Bottom">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF00AAFF" Offset="0"/>
+                    <GradientStop Color="#FF0091EA" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Btn1_Copy" Content="Изменить" Margin="0,0,10,49" Style="{DynamicResource OvalBut}" FontSize="25" Padding="0" FontWeight="Bold" Click="Button_Click1" Foreground="White" Height="50" HorizontalAlignment="Right" Width="150" VerticalAlignment="Bottom">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF00AAFF" Offset="0"/>
+                    <GradientStop Color="#FF0091EA" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <GroupBox Header="Коэффициенты гарантированного минимума&#xD;&#xA;зарплаты за месяц для каждого из грейдов:" HorizontalAlignment="Left" Height="107" Margin="159,195,0,0" VerticalAlignment="Top" Width="361" Foreground="#FF263238">
+            <Grid>
+                <TextBox x:Name="T1" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" Width="100" Height="22" VerticalAlignment="Top"/>
+                <TextBox x:Name="T2" HorizontalAlignment="Left" Height="22" Margin="115,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                <TextBox x:Name="T3" HorizontalAlignment="Left" Height="22" Margin="220,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                <Label Content="Senior" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF263238"/>
+                <Label Content="Middle" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF263238"/>
+                <Label Content=" Junior" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF263238"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Коэффициент характера выполненных работ&#xD;&#xA;для каждого из возможных значений параметра:" HorizontalAlignment="Left" Height="165" Margin="159,0,0,131" VerticalAlignment="Bottom" Width="361" Foreground="#FF263238">
+            <Grid>
+                <TextBox x:Name="T4" HorizontalAlignment="Left" Height="22" Margin="10,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.406,10.227"/>
+                <Label Content="Анализ и проектирование" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="165" Foreground="#FF263238"/>
+                <TextBox x:Name="T5" HorizontalAlignment="Left" Height="22" Margin="180,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+                <Label Content="Установка оборудования" HorizontalAlignment="Left" Margin="180,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="158" Foreground="#FF263238"/>
+                <TextBox x:Name="T6" HorizontalAlignment="Left" Height="22" Margin="10,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="328"/>
+                <Label Content="Техническое обслуживание и сопровождение" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="284" FontWeight="Bold" Foreground="#FF263238"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Дополнительный коэффициент для перевода&#xA;абстрактного веса задачи в денежный эквивалент:" Margin="0,0,168,131" Height="78" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="325" Foreground="#FF263238">
+            <Grid>
+                <TextBox x:Name="T9" Margin="11,10,10,0" TextWrapping="Wrap" Height="24" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Коэффициенты сложности и&#xD;&#xA;времени исполнения задач:&#xD;&#xA;" HorizontalAlignment="Right" Height="184" Margin="0,194,167,0" VerticalAlignment="Top" Width="329" RenderTransformOrigin="0.5,0.5" Foreground="#FF263238">
+            <GroupBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.374"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.327"/>
+                </TransformGroup>
+            </GroupBox.RenderTransform>
+            <Grid>
+                <TextBox x:Name="T8" Margin="10,41,10,0" TextWrapping="Wrap" Height="22" VerticalAlignment="Top"/>
+                <TextBox x:Name="T7" Margin="10,99,10,0" TextWrapping="Wrap" Height="22" VerticalAlignment="Top"/>
+                <Label Content="Коэффициент cложности:" HorizontalAlignment="Left" Margin="10,10,0,0" FontWeight="Bold" Width="171" Height="26" VerticalAlignment="Top" Foreground="#FF263238"/>
+                <Label Content="Коэффициент времени:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="158" Foreground="#FF263238"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>
